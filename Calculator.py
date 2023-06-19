@@ -8,6 +8,33 @@ root.geometry("570x600+100+200")
 root.resizable(False, False)
 root.configure(bg="#17161b")
 
+equation = ""
+
+
+def show(value):
+    global equation
+    equation += value
+    label_result.config(text=equation)
+
+
+def clear():
+    global equation
+    equation = ""
+    label_result.config(text=equation)
+
+
+def calculator():
+    global equation
+    result = ""
+    if equation != "":
+        try:
+            result = eval(equation)
+        except:
+            result = "error"
+            equation = ""
+    label_result.config(text=result)
+
+
 # make the typing bar
 
 label_result = Label(root, width=25, height=2, text="", font=("arial", 30))
@@ -24,6 +51,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#3697f5",
+    command=lambda: clear(),
 ).place(x=10, y=100)
 Button(
     root,
@@ -34,6 +62,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("/"),
 ).place(x=150, y=100)
 Button(
     root,
@@ -44,16 +73,18 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("%"),
 ).place(x=290, y=100)
 Button(
     root,
-    text="X",
+    text="*",
     width=5,
     height=1,
     font=("arial", 30, "bold"),
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("*"),
 ).place(x=430, y=100)
 
 Button(
@@ -65,6 +96,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("7"),
 ).place(x=10, y=200)
 Button(
     root,
@@ -75,6 +107,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("8"),
 ).place(x=150, y=200)
 Button(
     root,
@@ -85,6 +118,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("9"),
 ).place(x=290, y=200)
 Button(
     root,
@@ -95,6 +129,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("-"),
 ).place(x=430, y=200)
 
 
@@ -107,6 +142,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("4"),
 ).place(x=10, y=300)
 Button(
     root,
@@ -117,6 +153,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("5"),
 ).place(x=150, y=300)
 Button(
     root,
@@ -127,6 +164,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("6"),
 ).place(x=290, y=300)
 Button(
     root,
@@ -137,6 +175,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("+"),
 ).place(x=430, y=300)
 
 Button(
@@ -148,6 +187,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("1"),
 ).place(x=10, y=400)
 Button(
     root,
@@ -158,6 +198,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("2"),
 ).place(x=150, y=400)
 Button(
     root,
@@ -168,6 +209,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("3"),
 ).place(x=290, y=400)
 Button(
     root,
@@ -178,6 +220,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: clear("0"),
 ).place(x=10, y=500)
 
 Button(
@@ -189,6 +232,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#2a2d36",
+    command=lambda: show("."),
 ).place(x=290, y=500)
 Button(
     root,
@@ -199,6 +243,7 @@ Button(
     bd=1,
     fg="#fff",
     bg="#fe9037",
+    command=lambda: show("="),
 ).place(x=430, y=400)
 
 
